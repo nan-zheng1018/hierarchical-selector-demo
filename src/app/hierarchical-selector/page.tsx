@@ -37,17 +37,27 @@ export default function HierarchicalSelectorDemo() {
   const [kantoSelection, setKantoSelection] = useState<number[]>([])
 
   const handleKantoSelectionChange = (ids: number[]) => {
-    console.log(ids);
+    console.log(ids)
+    setKantoSelection(ids)
+  }
+
+  // IDから地域名を取得する関数
+  const getRegionNames = (data: SelectorItem, selectedIds: number[]): string[] => {
+    const names: string[] = []
+    if (data.children) {
+      data.children.forEach(child => {
+        if (selectedIds.includes(child.id)) {
+          names.push(child.r)
+        }
+      })
+    }
+    return names
   }
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Typography variant="h3" component="h1" gutterBottom align="center">
-        階層選択コンポーネント
-      </Typography>
-      
-      <Typography variant="body1" color="text.secondary" align="center" sx={{ mb: 4 }}>
-        図と同じデザインの階層選択UI - 親項目選択で全子項目選択、子項目選択は独立
+        地域選択コンポーネント
       </Typography>
 
       <Box display="flex" justifyContent="center" gap={4} mb={4}>
@@ -81,12 +91,12 @@ export default function HierarchicalSelectorDemo() {
         <Box display="flex" gap={4}>
           <Box>
             <Typography variant="subtitle2" color="primary">
-              近畿地方の選択: [{kinkiSelection.join(', ')}]
+              近畿地方の選択: [{getRegionNames(sampleData, kinkiSelection).join(', ')}]
             </Typography>
           </Box>
           <Box>
             <Typography variant="subtitle2" color="secondary">
-              関東地方の選択: [{kantoSelection.join(', ')}]
+              関東地方の選択: [{getRegionNames(kantoData, kantoSelection).join(', ')}]
             </Typography>
           </Box>
         </Box>

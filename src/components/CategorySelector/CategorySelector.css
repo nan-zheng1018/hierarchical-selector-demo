@@ -1,0 +1,508 @@
+/* CategorySelector コンポーネントのスタイル */
+.category-selector {
+  width: 100%;
+  /* max-width: 800px; */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* 予設キーワードエリア */
+.predefined-keywords {
+  margin-bottom: 16px;
+}
+
+.keyword-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+.keyword-chip {
+  border: 1px solid #ddd !important;
+  background-color: #fff !important;
+  color: #333 !important;
+  font-size: 13px !important;
+  height: 32px !important;
+  border-radius: 16px !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+  padding: 0 16px !important;
+  margin: 2px !important;
+}
+
+.keyword-chip:hover {
+  background-color: #f8f9fa !important;
+  border-color: #bbb !important;
+}
+
+.keyword-chip-active {
+  background-color: #1976d2 !important;
+  color: white !important;
+  border-color: #1976d2 !important;
+}
+
+.keyword-chip-active:hover {
+  background-color: #1565c0 !important;
+  border-color: #1565c0 !important;
+}
+
+/* 検索エリア */
+.search-area {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  align-items: stretch;
+}
+
+.search-input-container {
+  flex: 1;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+}
+
+.search-input .MuiOutlinedInput-root {
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  position: relative;
+  height: 40px;
+}
+
+.search-input .MuiOutlinedInput-input {
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+/* 自定义搜索输入框容器 */
+.custom-search-input-container {
+  flex: 1;
+  position: relative;
+}
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  padding: 4px 12px;
+  gap: 8px;
+  flex-wrap: wrap;
+  cursor: text;
+}
+
+.search-input-wrapper:focus-within {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 1px rgba(25, 118, 210, 0.2);
+}
+
+/* 关键词芯片样式 */
+.keyword-chip-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #1976d2;
+  color: white;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 12px;
+  height: 24px;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.keyword-chip-label {
+  font-weight: 500;
+  line-height: 1;
+}
+
+.keyword-chip-delete {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  transition: background-color 0.2s;
+}
+
+.keyword-chip-delete:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* 实际输入框 */
+.custom-search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  min-width: 200px; /* 增加最小宽度 */
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: inherit;
+  padding: 8px 4px;
+  width: 100%; /* 确保宽度 */
+}
+
+.custom-search-input::placeholder {
+  color: rgba(0, 0, 0, 0.6) !important;
+  opacity: 1 !important;
+  font-size: 16px;
+}
+
+.search-button {
+  padding: 0 24px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  min-width: 80px;
+  transition: background-color 0.2s ease;
+}
+
+.search-button:hover {
+  background-color: #1565c0;
+}
+
+/* カテゴリー選択エリア */
+.category-selection {
+  background-color: white;
+  /* 移除边框 */
+  border-radius: 8px;
+  overflow: hidden; /* 确保内部内容不超出圆角边界 */
+}
+
+/* カテゴリーアイテム */
+.category-item {
+  position: relative;
+}
+
+/* 层级树形线条系统 */
+.category-item {
+  position: relative;
+}
+
+/* 垂直线条 - 只为有子项的父节点显示 - 层级1 */
+.category-header.level-1.parent-node::before {
+  content: '';
+  position: absolute;
+  left: 25px; /* 32px缩进 + 12px复选框中心位置 */
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: #ddd;
+  z-index: 1;
+}
+
+/* 垂直线条 - 只为有子项的父节点显示 - 层级2 */
+.category-header.level-2.parent-node::before {
+  content: '';
+  position: absolute;
+  left: 58px; /* 64px缩进 + 12px复选框中心位置 */
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: #ddd;
+  z-index: 1;
+}
+
+/* 垂直线条 - 只为有子项的父节点显示 - 层级3+ */
+.category-header:not(.level-0):not(.level-1):not(.level-2).parent-node::before {
+  content: '';
+  position: absolute;
+  left: 90px; /* 96px缩进 + 12px复选框中心位置 */
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: #ddd;
+  z-index: 1;
+}
+
+/* カテゴリーヘッダー */
+.category-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.category-header:hover {
+  background-color: #f8f9fa;
+}
+
+.category-header.level-0 {
+  background-color: #1E88E5; /* 第一层：深蓝色 */
+  color: white;
+  padding: 12px 16px;
+  font-weight: 500;
+}
+
+.category-header.level-0:hover {
+  background-color: #1976d2; /* 保持原色，无变化 */
+}
+
+.category-header.level-0.parent-selected {
+  background-color: #1976d2;
+}
+
+.category-header.level-1 {
+  background-color: #BCE0FB; /* 第二层：中蓝色 */
+  color: #191D21;
+  padding: 10px 16px;
+  font-weight: 400;
+}
+
+.category-header.level-2 {
+  background-color: #E4F2FE; /* 第三层：浅蓝色 */
+  color: #191D21;
+  padding: 8px 16px;
+  font-weight: 400;
+}
+
+/* 层级指示器（小箭头） */
+.level-indicator {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.arrow-icon {
+  color: #666;
+  font-size: 16px !important;
+  margin-right: 4px;
+  position: relative;
+  z-index: 2;
+  background-color: white; /* 确保图标背景遮盖线条 */
+  border-radius: 2px;
+}
+
+.category-header:not(.level-0):not(.level-1):not(.level-2) {
+  background-color: white; /* 第四层开始：白色背景 */
+  padding: 6px 16px;
+  margin-left: 48px;
+}
+
+.category-header:not(.level-0):not(.level-1):not(.level-2):hover {
+  background-color: #f5f5f5;
+}
+
+/* 検索マッチのハイライト */
+.category-header.matching-item {
+  background-color: #fff3cd !important;
+  border-left: 4px solid #ffc107;
+}
+
+.category-header.matching-item:hover {
+  background-color: #ffeaa7 !important;
+}
+
+/* カテゴリーコンテンツ */
+.category-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* チェックボックス */
+.category-checkbox {
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* 统一复选框样式 */
+.unified-checkbox {
+  padding: 0 !important;
+}
+
+.unified-checkbox.unified-checkbox-selected .MuiSvgIcon-root {
+  color: #1976d2 !important;
+}
+
+/* 第0层复选框特殊样式 */
+.category-header.level-0 .unified-checkbox .MuiSvgIcon-root {
+  color: white !important;
+}
+
+.category-header.level-0 .unified-checkbox.unified-checkbox-selected .MuiSvgIcon-root {
+  color: white !important;
+}
+
+/* カテゴリー名 */
+.category-name {
+  font-size: 14px;
+  line-height: 1.4;
+  flex: 1;
+  transition: color 0.2s, font-weight 0.2s;
+}
+
+.category-name.level-0 {
+  color: white;
+  font-weight: 500;
+}
+
+.category-name.level-1 {
+  /* color: white; */
+  font-weight: 400;
+}
+
+.category-name.level-2 {
+  /* color: #1565c0; */
+  font-weight: 400;
+}
+
+.category-name.level-3,
+.category-name.level-4,
+.category-name.level-5 {
+  color: #333;
+  font-weight: 400;
+}
+
+.category-name:not(.level-0):not(.level-1):not(.level-2) {
+  color: #333;
+}
+
+/* 検索マッチのテキストハイライト */
+.category-name.matching-text {
+  background-color: #ffeb3b;
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+.level-0 .category-name.matching-text {
+  background-color: #fff59d;
+  color: #1976d2;
+}
+
+/* 子カテゴリーコンテナ */
+.children-container {
+  padding: 0;
+}
+
+/* 叶子节点容器保持父级缩进 */
+.inline-leaf-container {
+  margin-left: 0; /* 容器本身不额外缩进，通过paddingLeft控制整体缩进 */
+  display: block;
+  padding-left: 120px; /* 增加叶子节点容器的左侧缩进，使其更突出 */
+}
+
+/* 第4级以后的叶子节点内联显示 */
+.category-item.inline-leaf {
+  display: inline-block;
+  margin: 2px 10px 2px 0; /* 叶子节点之间右边距10px，左边距0 */
+  vertical-align: top;
+}
+
+.category-item.inline-leaf .category-header {
+  display: inline-flex;
+  padding: 4px 8px;
+  margin: 0; /* 叶子节点本身不需要额外的margin缩进 */
+  border: none; /* 移除边框 */
+  border-radius: 0; /* 移除圆角 */
+  background-color: transparent; /* 背景透明 */
+  font-size: 13px;
+  min-height: auto;
+}
+
+.category-item.inline-leaf .category-header:hover {
+  background-color: #f8f9fa; /* 悬停时轻微背景色 */
+}
+
+.category-item.inline-leaf .category-content {
+  padding-left: 0 !important; /* 内容不需要额外padding */
+}
+
+.category-item.inline-leaf .category-name {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.category-item.inline-leaf .leaf-checkbox {
+  margin-right: 4px;
+}
+
+/* アニメーション */
+.MuiCollapse-root {
+  transition: height 0.3s ease-in-out;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+  .search-area {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-button {
+    margin-top: 8px;
+  }
+  
+  .category-header.level-0 {
+    padding: 10px 12px;
+  }
+  
+  .category-header:not(.level-0) {
+    padding: 6px 12px;
+    margin-left: 12px;
+  }
+  
+  .category-selection {
+    max-height: 400px;
+  }
+
+  .keyword-tags {
+    gap: 3px;
+  }
+  
+  .keyword-chip {
+    height: 24px !important;
+  }
+
+  .search-input-container {
+    width: 100%;
+  }
+}
+
+/* 検索クリアボタン */
+.clear-search-button {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.clear-search-button:hover {
+  background-color: #f0f0f0;
+  color: #666;
+}
